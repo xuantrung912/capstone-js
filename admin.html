@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản trị - Trung Store</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="admin-body">
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">TRUNG<span>STORE</span></a>
+    <nav>
+      <a href="index.html">Trang bán hàng</a>
+      <a class="active" href="admin.html">Quản trị</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container admin-page">
+  <div class="page-title">
+    <div><p class="eyebrow">ADMIN PANEL</p><h1>Quản lý cửa hàng</h1></div>
+    <button class="btn btn-primary" id="reloadAll">↻ Làm mới dữ liệu</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="productsTab">Sản phẩm</button>
+    <button class="tab" data-tab="storesTab">Cửa hàng</button>
+  </div>
+
+  <section id="productsTab" class="tab-content active">
+    <div class="admin-toolbar">
+      <h2>Danh sách sản phẩm</h2>
+      <button class="btn btn-primary" id="addProductBtn">+ Thêm sản phẩm</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Sản phẩm</th><th>Giá</th><th>Danh mục</th><th>Thao tác</th></tr></thead>
+        <tbody id="productTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="storesTab" class="tab-content">
+    <div class="admin-toolbar">
+      <h2>Danh sách cửa hàng</h2>
+      <button class="btn btn-primary" id="addStoreBtn">+ Thêm cửa hàng</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Tên cửa hàng</th><th>Địa chỉ</th><th>Điện thoại</th><th>Thao tác</th></tr></thead>
+        <tbody id="storeTable"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<div class="modal hidden" id="adminModal">
+  <div class="modal-card form-card">
+    <button class="modal-close" id="closeAdminModal">×</button>
+    <h2 id="formTitle">Thêm sản phẩm</h2>
+    <form id="adminForm">
+      <div id="productFields">
+        <label>Tên sản phẩm<input name="name" required></label>
+        <div class="form-row">
+          <label>Giá<input name="price" type="number" min="0" required></label>
+          <label>Số lượng<input name="quantity" type="number" min="0" value="0"></label>
+        </div>
+        <label>Hình ảnh<input name="image" placeholder="https://..."></label>
+        <label>Danh mục<select name="categoryId" id="formCategory" required></select></label>
+        <label>Mô tả<textarea name="description" rows="4"></textarea></label>
+      </div>
+      <div id="storeFields" class="hidden">
+        <label>Tên cửa hàng<input name="storeName"></label>
+        <label>Địa chỉ<input name="address"></label>
+        <div class="form-row">
+          <label>Điện thoại<input name="phone"></label>
+          <label>Email<input name="email" type="email"></label>
+        </div>
+      </div>
+      <input type="hidden" name="id">
+      <input type="hidden" name="entity">
+      <button class="btn btn-primary full" type="submit">Lưu dữ liệu</button>
+    </form>
+    <p id="formMessage" class="form-message"></p>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>
